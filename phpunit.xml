@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+    </coverage>
+    <php>
+        <server name="GMO_API_MODE" value="testing"/>
+        <server name="GMO_SHOP_ID" value="tshop00048297"/>
+        <server name="GMO_SHOP_PASS" value="8wqxhug6"/>
+        <server name="GMO_SITE_ID" value="tsite00041999"/>
+        <server name="GMO_SITE_PASS" value="nvpbydy1"/>
+    </php>
+</phpunit>
