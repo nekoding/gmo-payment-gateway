@@ -3,6 +3,7 @@
 namespace Nekoding\GmoPaymentGateway\Core\Traits;
 
 use GuzzleHttp\Client;
+use Nekoding\GmoPaymentGateway\Core\GMOConst;
 use Nekoding\GmoPaymentGateway\Exceptions\HttpMethodException;
 
 trait HttpClient
@@ -46,14 +47,14 @@ trait HttpClient
         ]);
     }
 
-    public function request(string $httpMethod = 'GET', string $url, array $body, array $requiredBody = [])
+    public function request(string $url, array $body, string $httpMethod = 'POST')
     {
-        if ($httpMethod == 'POST') {
-            return $this->post($url, array_merge($body, $requiredBody));
+        if ($httpMethod == GMOConst::HTTP_POST) {
+            return $this->post($url, $body);
         }
 
-        if ($httpMethod == 'GET') {
-            return $this->get($url, array_merge($body, $requiredBody));
+        if ($httpMethod == GMOConst::HTTP_GET) {
+            return $this->get($url, $body);
         }
 
         throw HttpMethodException::withMessage("HTTP Not supported for this endpoint");

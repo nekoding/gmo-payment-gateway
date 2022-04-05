@@ -14,46 +14,46 @@ class GmoSiteApi extends GmoSiteApiContract
 
     public function saveMember(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::SAVE_MEMBER, $data, $this->apiCredentials()));
+        return new Response($this->request(self::SAVE_MEMBER, array_merge($data, $this->apiCredentials())));
     }
 
     public function updateMember(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::UPDATE_MEMBER, $data, $this->apiCredentials()));
+        return new Response($this->request(self::UPDATE_MEMBER, array_merge($data, $this->apiCredentials())));
     }
 
     public function searchMember(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_GET, self::SEARCH_MEMBER, $data, $this->apiCredentials()));
+        return new Response($this->request(self::SEARCH_MEMBER, array_merge($data, $this->apiCredentials())));
     }
 
     public function deleteMember(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::DELETE_MEMBER, $data, $this->apiCredentials()));
+        return new Response($this->request(self::DELETE_MEMBER, array_merge($data, $this->apiCredentials())));
     }
 
     public function saveCard(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::SAVE_CARD, $data, $this->apiCredentials()));
+        return new Response($this->request(self::SAVE_CARD, array_merge($data, $this->apiCredentials())));
     }
 
     public function tradedCard(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::TRADED_CARD, $data, $this->apiCredentials()));
+        return new Response($this->request(self::TRADED_CARD, array_merge($data, $this->apiCredentials())));
     }
 
     public function searchCard(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::SEARCH_CARD, $data, $this->apiCredentials()));
+        return new Response($this->request(self::SEARCH_CARD, array_merge($data, $this->apiCredentials())));
     }
 
     public function searchCardDetail(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::SEARCH_CARD_DETAIL, $data, $this->apiCredentials()));
+        return new Response($this->request(self::SEARCH_CARD_DETAIL, array_merge($data, $this->apiCredentials())));
     }
 
     public function deleteCard(array $data): ResponseParser
     {
-        return new Response($this->request(GMOConst::HTTP_POST, self::DELETE_CARD, $data, $this->apiCredentials()));
+        return new Response($this->request(self::DELETE_CARD, array_merge($data, $this->apiCredentials())));
     }
 }
