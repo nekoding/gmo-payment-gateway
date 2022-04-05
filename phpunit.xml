@@ -15,10 +15,11 @@
         </include>
     </coverage>
     <php>
-        <server name="GMO_API_MODE" value="testing"/>
+        <server name="GMO_API_SANDBOX_MODE" value="true"/>
         <server name="GMO_SHOP_ID" value="tshop00048297"/>
         <server name="GMO_SHOP_PASS" value="8wqxhug6"/>
         <server name="GMO_SITE_ID" value="tsite00041999"/>
         <server name="GMO_SITE_PASS" value="nvpbydy1"/>
+        <server name="GMO_API_TIMEOUT" value="5"/>
     </php>
 </phpunit>

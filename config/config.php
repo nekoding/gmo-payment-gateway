@@ -13,5 +13,6 @@ return [
     ],
     'secure'   => [
         '3dversion'   => env('GMO_3DS_VERSION')
-    ]
+    ],
+    'timeout'       => env('GMO_API_TIMEOUT', 2)
 ];

@@ -19,8 +19,8 @@ trait HttpClient
     public function initHttpClient()
     {
         $this->httpClient = new Client([
-            'base_uri'  => config('gmo-payment-gateway.is_sandbox') ?? env('GMO_API_MODE') ? $this->sandboxEndpoint : $this->prodEndpoint,
-            'timeout'   => 2.0,
+            'base_uri'  => config('gmo-payment-gateway.is_sandbox') ?? env('GMO_API_SANDBOX_MODE', true) ? $this->sandboxEndpoint : $this->prodEndpoint,
+            'timeout'   => config('gmo-payment-gateway.timeout') ?? env('GMO_API_TIMEOUT', 2),
         ]);
     }
 
