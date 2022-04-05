@@ -32,6 +32,39 @@ $siteApi = $gmo->useSiteApi();
 
 // if you want interact with GMO Shop API use this
 $shopApi = $gmo->useShopApi();
+
+// Or you can use facade like this too
+\Nekoding\GmoPaymentGateway\GmoPaymentGatewayFacade::useShopApi();
+\Nekoding\GmoPaymentGateway\GmoPaymentGatewayFacade::useSiteApi();
+\Nekoding\GmoPaymentGateway\GmoPaymentGatewayFacade::creditCard();
+
+// If you want execution CreditCard EntryTran and CreditCard ExecTran at once 
+// You can use CreditCard entryTransaction callback like this
+use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard\Basic;
+use \Nekoding\GmoPaymentGateway\GmoPaymentGatewayFacade;
+
+$data = ['OrderID' => uniqid(), 'JobCd' => 'AUTH', 'Amount' => 1000, 'Method' => '', 'Token' => ''];
+$response = GmoPaymentGatewayFacade::creditCard()
+            ->entryTransaction($data, function (Basic $gmo) use (&$data) {
+                return $gmo->execTransaction($data);
+            });
+
+$response->getResult(); // it will return response from entry transaction and exec transaction process
+
+// example response :
+[
+  "ACS" => "0"
+  "OrderID" => "xxxx"
+  "Forward" => "xxx"
+  "Method" => "1"
+  "PayTimes" => ""
+  "Approve" => "xxx"
+  "TranID" => "xxxx"
+  "TranDate" => "xxxxx"
+  "CheckString" => "xxxxx",
+  "AccessID" => "xxxxx",
+  "AccessPass" => "xxxx"
+]
 ```
 
 ### Configuration
@@ -45,7 +78,13 @@ You can change api credential via `.env` or via `config/config.php`
 | GMO_SHOP_ID          | Credential to connect GMO Shop API                                           |
 | GMO_SHOP_PASS        | Credential to connect GMO Shop API                                           |
 | GMO_3DS_VERSION      | 3DS API Version for credit card (only support value 1 / 2)                   |
-| GMO_API_TIMEOUT      | Determine API Timeout (default: 2s)                                           |
+| GMO_API_TIMEOUT      | Determine API Timeout (default: 2s)                                          |
+
+
+### Supported API 
+
+- [x] SiteAPI  
+- [x] ShopAPI - Credit card payment
 
 
 ### Testing
