@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/nekoding/gmo-payment-gateway.svg?style=flat-square)](https://packagist.org/packages/nekoding/gmo-payment-gateway)
 [![Total Downloads](https://img.shields.io/packagist/dt/nekoding/gmo-payment-gateway.svg?style=flat-square)](https://packagist.org/packages/nekoding/gmo-payment-gateway)
-![GitHub Actions](https://github.com/nekoding/gmo-payment-gateway/actions/workflows/main.yml/badge.svg)
 
 Simple package to interact GMOPG API for laravel project
 
@@ -32,9 +31,6 @@ $shopApi = $gmo->useShopApi();
 ### Configuration
 You can change api credential via `.env` or via `config/config.php`  
 
-```
-Available Configuration
-
 | ENV Key              | Description                                                                  |
 |----------------------|------------------------------------------------------------------------------|
 | GMO_API_SANDBOX_MODE | If true package will use sandbox endpoint instead production endpoint        |
@@ -44,7 +40,6 @@ Available Configuration
 | GMO_SHOP_PASS        | Credential to connect GMO Shop API                                           |
 | GMO_3DS_VERSION      | 3DS API Version for credit card (only support value 1 / 2)                   |
 
-```
 
 ### Testing
 
