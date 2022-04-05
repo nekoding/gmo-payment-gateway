@@ -13,6 +13,12 @@ You can install the package via composer:
 composer require nekoding/gmo-payment-gateway
 ```
 
+Publish configuration file with  
+
+```bash
+php artisan vendor:publish --provider="Nekoding\GmoPaymentGateway\GmoPaymentGatewayServiceProvider"
+```
+
 ## Usage
 
 ```php

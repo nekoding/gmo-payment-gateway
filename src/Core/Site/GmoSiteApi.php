@@ -4,11 +4,10 @@ namespace Nekoding\GmoPaymentGateway\Core\Site;
 
 use Nekoding\GmoPaymentGateway\Contracts\Response\ResponseParser;
 use Nekoding\GmoPaymentGateway\Contracts\Site\GmoSiteApi as GmoSiteApiContract;
-use Nekoding\GmoPaymentGateway\Core\GMOConst;
 use Nekoding\GmoPaymentGateway\Core\Response;
 use Nekoding\GmoPaymentGateway\Core\Traits\HttpClient;
 
-class GmoSiteApi extends GmoSiteApiContract
+final class GmoSiteApi extends GmoSiteApiContract
 {
     use HttpClient;
 

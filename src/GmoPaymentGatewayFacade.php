@@ -5,9 +5,9 @@ namespace Nekoding\GmoPaymentGateway;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Nekoding\GmoPaymentGateway\GmoPaymentGateway useShopApi()
- * @method static \Nekoding\GmoPaymentGateway\GmoPaymentGateway useSiteApi()
- * @method static \Nekoding\GmoPaymentGateway\Core\Shop\GmoShopApi creditCard()
+ * @method static \Nekoding\GmoPaymentGateway\Contracts\Shop\GmoShopApi useShopApi()
+ * @method static \Nekoding\GmoPaymentGateway\Contracts\Site\GmoSiteApi useSiteApi()
+ * @method static \Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard creditCard()
  * 
  * @see \Nekoding\GmoPaymentGateway\Skeleton\SkeletonClass
  */
