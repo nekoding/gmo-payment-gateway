@@ -1,6 +1,6 @@
 <?php
 
-namespace Nekoding\GmoPaymentGateway\Contracts\Shop;
+namespace Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard;
 
 use Closure;
 use Nekoding\GmoPaymentGateway\Contracts\Response\ResponseParser;

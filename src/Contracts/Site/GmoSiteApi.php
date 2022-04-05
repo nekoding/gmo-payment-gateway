@@ -3,11 +3,13 @@
 namespace Nekoding\GmoPaymentGateway\Contracts\Site;
 
 abstract class GmoSiteApi implements GmoMembership, GmoCreditCard
-{
-    const HTTP_POST = 'POST';
-    const HTTP_GET = 'GET';
-
-    public function apiCredentials()
+{        
+    /**
+     * Generate credential to connect GMO Site API
+     *
+     * @return array
+     */
+    public function apiCredentials(): array
     {
         return [
             'SiteID'    => config('gmo-payment-gateway.creds.site_id') ?? env('GMO_SITE_ID'),
