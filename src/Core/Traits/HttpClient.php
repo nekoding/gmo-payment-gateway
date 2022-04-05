@@ -8,45 +8,77 @@ use Nekoding\GmoPaymentGateway\Exceptions\HttpMethodException;
 
 trait HttpClient
 {
-
+    
+    /**
+     * GMO Production endpoint
+     *
+     * @var string
+     */
     private $prodEndpoint = 'https://p01.mul-pay.jp';
-
+    
+    /**
+     * GMO Sandbox endpoint
+     *
+     * @var string
+     */
     private $sandboxEndpoint = 'https://pt01.mul-pay.jp';
 
-    protected $httpClient;
-
-    protected $httpClientConfig;
-
-    public function initHttpClient()
-    {
-        $this->httpClient = new Client([
-            'base_uri'  => config('gmo-payment-gateway.is_sandbox') ?? env('GMO_API_SANDBOX_MODE', true) ? $this->sandboxEndpoint : $this->prodEndpoint,
-            'timeout'   => config('gmo-payment-gateway.timeout') ?? env('GMO_API_TIMEOUT', 2),
-        ]);
-    }
-
-    public function post(string $url, array $body)
+    /**
+     * @var \GuzzleHttp\Client $httpClient
+     */
+    private $httpClient;
+        
+    /**
+     * Initalize Http Client
+     *
+     * @return Client
+     */
+    protected function initHttpClient(): Client
     {
         if (!$this->httpClient) {
-            $this->initHttpClient();
+            $this->httpClient = new Client([
+                'base_uri'  => config('gmo-payment-gateway.is_sandbox') ?? env('GMO_API_SANDBOX_MODE', true) ? $this->sandboxEndpoint : $this->prodEndpoint,
+                'timeout'   => config('gmo-payment-gateway.timeout') ?? env('GMO_API_TIMEOUT', 2),
+            ]);
         }
 
-        return $this->httpClient->post($url, [
+        return $this->httpClient;
+    }
+
+    /**
+     * Send HTTP Post Request
+     *
+     * @param  string $url
+     * @param  array $body
+     */
+    public function post(string $url, array $body)
+    {
+        return $this->initHttpClient()->post($url, [
             'form_params' => $body
         ]);
     }
-
+    
+    /**
+     * Send HTTP Get Request
+     *
+     * @param  string $url
+     * @param  array $body
+     */
     public function get(string $url, array $body)
     {
-        if (!$this->httpClient) {
-            $this->initHttpClient();
-        }
-
-        return $this->httpClient->get($url, [
+        return $this->initHttpClient()->get($url, [
             'query' => $body
         ]);
     }
-
+    
+    /**
+     * Send HTTP Request
+     *
+     * @param  string $url
+     * @param  array $body
+     * @param  string $httpMethod
+     * @throws \Nekoding\GmoPaymentGateway\Exceptions\HttpMethodException
+     */
     public function request(string $url, array $body, string $httpMethod = 'POST')
     {
         if ($httpMethod == GMOConst::HTTP_POST) {

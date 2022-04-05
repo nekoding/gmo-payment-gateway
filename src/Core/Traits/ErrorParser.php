@@ -5,7 +5,13 @@ namespace Nekoding\GmoPaymentGateway\Core\Traits;
 use Nekoding\GmoPaymentGateway\Core\ErrorMessageCollection;
 
 trait ErrorParser
-{
+{    
+    /**
+     * Parsing error message
+     *
+     * @param  mixed $errorResponse
+     * @return array
+     */
     public function parseErrorMessages(string $errorResponse): array
     {
         parse_str($errorResponse, $res);
@@ -18,7 +24,13 @@ trait ErrorParser
 
         return $errorMessages;
     }
-
+    
+    /**
+     * Get error message
+     *
+     * @param  mixed $key
+     * @return string
+     */
     private function getErrorMessage(string $key): string
     {
         if (array_key_exists($key, ErrorMessageCollection::getErrorMessages())) {

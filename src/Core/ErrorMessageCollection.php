@@ -3,7 +3,13 @@
 namespace Nekoding\GmoPaymentGateway\Core;
 
 class ErrorMessageCollection 
-{
+{    
+    /**
+     * Error message collection
+     *
+     * @return array
+     * @see https://docs.mul-pay.jp/payment/credit/errorcode
+     */
     public static function getErrorMessages(): array
     {
         return [
