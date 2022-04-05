@@ -39,6 +39,7 @@ You can change api credential via `.env` or via `config/config.php`
 | GMO_SHOP_ID          | Credential to connect GMO Shop API                                           |
 | GMO_SHOP_PASS        | Credential to connect GMO Shop API                                           |
 | GMO_3DS_VERSION      | 3DS API Version for credit card (only support value 1 / 2)                   |
+| GMO_API_TIMEOUT      | Determine API Timeout (default: 2s)                                           |
 
 
 ### Testing
