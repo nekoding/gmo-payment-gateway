@@ -33,6 +33,9 @@ final class CreditCard extends CreditCardContract
     {
         if ($this->response) {
             $data = array_merge($data, $this->response->getResult());
+            return new Response(
+                $this->request(self::EXEC_TRAN, array_merge($data, $this->apiCredential)), $this->response->getResult()
+            );
         }
 
         return new Response($this->request(self::EXEC_TRAN, array_merge($data, $this->apiCredential)));

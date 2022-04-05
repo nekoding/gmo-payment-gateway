@@ -13,17 +13,40 @@ class Response implements ResponseParser
 
     private int $httpStatusCode;
 
-    private $body;
-
     private bool $hasError = false;
-
+    
+    /**
+     * Response data
+     *
+     * @var string
+     */
     private $responseData;
-
+    
+    /**
+     * Error message bag
+     *
+     * @var array
+     */
     private $errorMessages = [];
-
-    public function __construct($result)
+    
+    /**
+     * Append data
+     *
+     * @var array
+     */
+    private $appendData = [];
+    
+    /**
+     * Initialize Response data
+     *
+     * @param  mixed $result
+     * @param  array $appendData
+     * @return void
+     */
+    public function __construct($result, array $appendData = [])
     {
         $this->createResponseData($result);
+        $this->appendData = $appendData;
     }
 
     public static function parse($response): ResponseParser
@@ -49,7 +72,7 @@ class Response implements ResponseParser
     public function getResult(): array
     {
         parse_str($this->responseData, $result);
-        return $result;
+        return array_merge($result, $this->appendData);
     }
 
     private function createResponseData(Psr7Response $response): void
