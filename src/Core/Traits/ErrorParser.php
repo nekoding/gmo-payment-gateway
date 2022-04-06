@@ -9,10 +9,10 @@ trait ErrorParser
     /**
      * Parsing error message
      *
-     * @param  mixed $errorResponse
+     * @param  array|string $errorResponse
      * @return array
      */
-    public function parseErrorMessages(string $errorResponse): array
+    public function parseErrorMessages($errorResponse): array
     {
         parse_str($errorResponse, $res);
         $errorInfoCode = explode('|', $res['ErrInfo']);
@@ -28,10 +28,10 @@ trait ErrorParser
     /**
      * Get error message
      *
-     * @param  mixed $key
+     * @param  string $key
      * @return string
      */
-    private function getErrorMessage(string $key): string
+    protected function getErrorMessage(string $key): string
     {
         if (array_key_exists($key, ErrorMessageCollection::getErrorMessages())) {
             return ErrorMessageCollection::getErrorMessages()[$key];

@@ -3,11 +3,13 @@
 namespace Nekoding\GmoPaymentGateway\Core\Shop;
 
 use Closure;
+use Nekoding\GmoPaymentGateway\Contracts\Encryption\Token;
 use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard as CreditCardContract;
 use Nekoding\GmoPaymentGateway\Core\Traits\HttpClient;
 use Nekoding\GmoPaymentGateway\Core\Response;
 use Nekoding\GmoPaymentGateway\Contracts\Response\ResponseParser;
 use Nekoding\GmoPaymentGateway\Core\GMOConst;
+use Nekoding\GmoPaymentGateway\Core\Shop\Encryption\Response as EncryptionResponse;
 use Nekoding\GmoPaymentGateway\Exceptions\ApiException;
 
 final class CreditCard extends CreditCardContract
@@ -104,5 +106,15 @@ final class CreditCard extends CreditCardContract
         }
 
         throw new ApiException("This method only support 3DS v2, please check your configuration.");
+    }
+
+    public function getCreditCardToken(Token $token): ResponseParser
+    {
+        $data = [
+            'Encrypted' => $token->getEncryptionCreditCard(),
+            'KeyHash'   => config('gmo-payment-gateway.key_hash') ?? env('GMO_PUBLIC_KEY_HASH'),
+        ];
+
+        return new EncryptionResponse($this->post(Token::GET_TOKEN_URI, array_merge($data, $this->apiCredential)));
     }
 }

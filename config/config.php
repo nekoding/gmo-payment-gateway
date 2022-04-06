@@ -14,5 +14,7 @@ return [
     'secure'   => [
         '3dversion'   => env('GMO_3DS_VERSION')
     ],
-    'timeout'       => env('GMO_API_TIMEOUT', 2)
+    'timeout'       => env('GMO_API_TIMEOUT', 2),
+    'public_key'    => env('GMO_PUBLIC_KEY'),
+    'key_hash'      => env('GMO_PUBLIC_KEY_HASH')
 ];

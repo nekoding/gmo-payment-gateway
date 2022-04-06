@@ -11,23 +11,23 @@ class Response implements ResponseParser
 
     use ErrorParser;
 
-    private int $httpStatusCode;
+    protected int $httpStatusCode;
 
-    private bool $hasError = false;
+    protected bool $hasError = false;
     
     /**
      * Response data
      *
      * @var string
      */
-    private $responseData;
+    protected $responseData;
     
     /**
      * Error message bag
      *
      * @var array
      */
-    private $errorMessages = [];
+    protected $errorMessages = [];
     
     /**
      * Append data
@@ -75,7 +75,7 @@ class Response implements ResponseParser
         return array_merge($result, $this->appendData);
     }
 
-    private function createResponseData(Psr7Response $response): void
+    protected function createResponseData(Psr7Response $response): void
     {
         $this->httpStatusCode = $response->getStatusCode();
         if (!$this->checkApiHasErrorCode((string) $response->getBody())) {
@@ -83,7 +83,7 @@ class Response implements ResponseParser
         }
     }
 
-    private function checkApiHasErrorCode(string $response): bool
+    protected function checkApiHasErrorCode(string $response): bool
     {
         $check = str_contains($response, 'ErrCode') && str_contains($response, 'ErrInfo');
 

@@ -2,11 +2,13 @@
 
 namespace Nekoding\GmoPaymentGateway\Contracts\Shop;
 
+use Nekoding\GmoPaymentGateway\Contracts\Encryption\Token;
+use Nekoding\GmoPaymentGateway\Contracts\Response\ResponseParser;
 use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard\Api3DSv1;
 use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard\Api3DSv2;
 use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard\Basic;
 
-abstract class CreditCard implements Api3DSv1, Api3DSv2, Basic
+abstract class CreditCard implements Api3DSv1, Api3DSv2, Basic, CanEncryptToken
 {
     const TDSV1 = 1;
     const TDSV2 = 2;
@@ -32,4 +34,5 @@ abstract class CreditCard implements Api3DSv1, Api3DSv2, Basic
     {
         return $this->apiCredential;
     }
+    
 }
