@@ -2,6 +2,8 @@
 
 namespace Nekoding\GmoPaymentGateway\Tests;
 
+use Nekoding\GmoPaymentGateway\Core\Shop\Encryption\CreditCardToken;
+use Nekoding\GmoPaymentGateway\Core\Shop\Encryption\CreditCardTokenizer;
 use Nekoding\GmoPaymentGateway\GmoPaymentGateway;
 
 class GmoPaymentGatewayTest extends TestCase
