@@ -11,7 +11,7 @@ interface GmoCreditCard
     const SAVE_CARD             = '/payment/SaveCard.idPass';
     const TRADED_CARD           = '/payment/TradedCard.idPass';
     const SEARCH_CARD           = '/payment/SearchCard.idPass';
-    const SEARCH_CARD_DETAIL    = '/payment/ExecTran.idPass';
+    const SEARCH_CARD_DETAIL    = '/payment/SearchCardDetail.idPass';
     const DELETE_CARD           = '/payment/DeleteCard.idPass';
     
     /**
