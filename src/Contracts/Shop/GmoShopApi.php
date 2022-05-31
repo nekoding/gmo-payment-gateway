@@ -9,5 +9,12 @@ interface GmoShopApi
      *
      * @return CreditCard
      */
-    public function creditCard(): CreditCard;   
+    public function creditCard(): CreditCard;  
+        
+    /**
+     * Using Docomo as payment
+     *
+     * @return Docomo
+     */
+    public function docomo(): Docomo;
 }

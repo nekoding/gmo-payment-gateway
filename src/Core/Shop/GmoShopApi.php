@@ -3,8 +3,10 @@
 namespace Nekoding\GmoPaymentGateway\Core\Shop;
 
 use Nekoding\GmoPaymentGateway\Contracts\Shop\CreditCard;
+use Nekoding\GmoPaymentGateway\Contracts\Shop\Docomo;
 use Nekoding\GmoPaymentGateway\Contracts\Shop\GmoShopApi as GmoShopContracts;
 use Nekoding\GmoPaymentGateway\Core\Shop\CreditCard as ShopCreditCard;
+use Nekoding\GmoPaymentGateway\Core\Shop\Docomo as ShopDocomo;
 
 final class GmoShopApi implements GmoShopContracts
 {
@@ -24,6 +26,11 @@ final class GmoShopApi implements GmoShopContracts
     public function creditCard(): CreditCard
     {
         return new ShopCreditCard($this->apiCredentials());
+    }
+
+    public function docomo(): Docomo
+    {
+        return (new ShopDocomo())->loadCreds($this->apiCredentials());
     }
 
 }

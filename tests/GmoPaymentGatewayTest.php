@@ -2,6 +2,7 @@
 
 namespace Nekoding\GmoPaymentGateway\Tests;
 
+use Nekoding\GmoPaymentGateway\Contracts\Shop\CommonPayment;
 use Nekoding\GmoPaymentGateway\Core\Shop\Encryption\CreditCardToken;
 use Nekoding\GmoPaymentGateway\Core\Shop\Encryption\CreditCardTokenizer;
 use Nekoding\GmoPaymentGateway\GmoPaymentGateway;
