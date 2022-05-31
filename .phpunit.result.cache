@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Nekoding\\GmoPaymentGateway\\Tests\\GmoPaymentGatewayTest::test_docomo":4},"times":{"Nekoding\\GmoPaymentGateway\\Tests\\GmoPaymentGatewayTest::test_initialize_package":0.592,"Nekoding\\GmoPaymentGateway\\Tests\\GmoPaymentGatewayTest::test_docomo":0.012}}
+{"version":1,"defects":{"Nekoding\\GmoPaymentGateway\\Tests\\GmoPaymentGatewayTest::test_docomo":4},"times":{"Nekoding\\GmoPaymentGateway\\Tests\\GmoPaymentGatewayTest::test_initialize_package":0.56,"Nekoding\\GmoPaymentGateway\\Tests\\GmoPaymentGatewayTest::test_docomo":0.652}}
