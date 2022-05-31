@@ -23,7 +23,7 @@ class Docomo implements ShopDocomo
 
     public function entryTransaction(array $data, ?Closure $callback = null): ResponseParser
     {
-        $params = Validator::make($data, 
+        $data = Validator::make($data, 
         [
             'OrderID'   => 'required|string|max:27',
             'JobCd'     => 'required|in:AUTH,CAPTURE',
@@ -33,7 +33,7 @@ class Docomo implements ShopDocomo
 
         if ($callback) {
             $this->response = new Response(
-                $this->request(self::ENTRY_TRAN, array_merge($params, $this->getApiCredential()))
+                $this->request(self::ENTRY_TRAN, array_merge($data, $this->getApiCredential()))
             );
 
             return $callback($this);
@@ -49,7 +49,7 @@ class Docomo implements ShopDocomo
             $data = array_merge($data, $this->response->getResult());
         }
 
-        $params = Validator::make($data, [
+        $data = Validator::make($data, [
             'OrderID'       => 'required|string|max:27',
             'AccessID'      => 'required|string|max:32',
             'AccessPass'    => 'required|string|max:32',
@@ -67,10 +67,12 @@ class Docomo implements ShopDocomo
         ])->validate();
 
         if ($this->response) {
-            return new Response($this->request(self::EXEC_TRAN, $params, $this->response->getResult()));
+            return new Response(
+                $this->request(self::EXEC_TRAN, array_merge($data, $this->getApiCredential())), $this->response->getResult()
+            );
         }
 
-        return new Response($this->request(self::EXEC_TRAN, array_merge($params, $this->getApiCredential())));
+        return new Response($this->request(self::EXEC_TRAN, array_merge($data, $this->getApiCredential())));
     }
 
 }
