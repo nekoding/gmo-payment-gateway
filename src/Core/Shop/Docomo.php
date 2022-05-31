@@ -67,9 +67,7 @@ class Docomo implements ShopDocomo
         ])->validate();
 
         if ($this->response) {
-            return new Response(
-                $this->request(self::EXEC_TRAN, array_merge($params, $this->getApiCredential())), $this->response->getResult()
-            );
+            return new Response($this->request(self::EXEC_TRAN, $params, $this->response->getResult()));
         }
 
         return new Response($this->request(self::EXEC_TRAN, array_merge($params, $this->getApiCredential())));
