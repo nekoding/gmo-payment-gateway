@@ -2,7 +2,7 @@
 
 namespace Nekoding\GmoPaymentGateway\Core\Shop\Encryption;
 
-use Illuminate\Contracts\Encryption\EncryptException;
+use InvalidArgumentException;
 use Nekoding\GmoPaymentGateway\Contracts\Encryption\Token;
 use phpseclib3\Crypt\RSA;
 
@@ -21,7 +21,7 @@ final class CreditCardTokenizer implements Token
         $gmoPublicKey = config('gmo-payment-gateway.public_key') ?? env('GMO_PUBLIC_KEY');
 
         if (!$gmoPublicKey) {
-            throw new EncryptException("Public key cannot null");
+            throw new InvalidArgumentException("Public key cannot null");
         }
 
         if (is_array($data)) {
