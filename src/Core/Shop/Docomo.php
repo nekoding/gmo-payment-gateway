@@ -23,7 +23,8 @@ class Docomo implements ShopDocomo
 
     public function entryTransaction(array $data, ?Closure $callback = null): ResponseParser
     {
-        $params = Validator::make($data, [
+        $params = Validator::make($data, 
+        [
             'OrderID'   => 'required|string|max:27',
             'JobCd'     => 'required|in:AUTH,CAPTURE',
             'Amount'    => 'required|numeric|digits:6',
